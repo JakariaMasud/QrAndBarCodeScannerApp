@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph.xml"
+    app:startDestination="@id/barCodeFragment">
+
+    <fragment
+        android:id="@+id/barCodeFragment"
+        android:name="com.example.qrandbarcodescanner.view.BarCodeFragment"
+        android:label="Scan Bar Code"
+        tools:layout="@layout/fragment_bar_code" />
+    <fragment
+        android:id="@+id/barCodeListFragment"
+        android:name="com.example.qrandbarcodescanner.view.BarCodeListFragment"
+        android:label="Bar Code List"
+        tools:layout="@layout/fragment_bar_code_list" />
+    <fragment
+        android:id="@+id/postListFragment"
+        android:name="com.example.qrandbarcodescanner.view.PostListFragment"
+        android:label="Post List"
+        tools:layout="@layout/fragment_post_list" />
+</navigation>

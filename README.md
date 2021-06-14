@@ -11,13 +11,13 @@ An android application which allows user to scan qr or barcode and saved it into
 5. Firebase Realtime Database
 
 
-#### ScreenShot of Firebase DB nodes :
+#### Screenshot of Firebase DB nodes :
 
 <img src="images/db.PNG">
 
-#### ScreemShot of App Screen: 
+#### Screenshot of App Screen: 
 
-<img src="images/1.jpg">
-<img src="images/2.jpg">
-<img src="images/3.jpg">
+<img src="images/1.jpg" height="550">
+<img src="images/2.jpg" height="550">
+<img src="images/3.jpg" height="550">
 

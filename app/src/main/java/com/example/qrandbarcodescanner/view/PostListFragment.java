@@ -26,38 +26,51 @@ import java.util.List;
 
 
 public class PostListFragment extends Fragment {
-  FragmentPostListBinding binding;
+    FragmentPostListBinding binding;
     RecyclerView.LayoutManager layoutManager;
     PostAdapter adapter;
     PostViewModel postViewModel;
     NavController navController;
-
+    boolean isDataLoaded = false;
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        binding=FragmentPostListBinding.inflate(inflater,container,false);
+        binding = FragmentPostListBinding.inflate(inflater, container, false);
         return binding.getRoot();
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        navController= Navigation.findNavController(view);
-        layoutManager= new LinearLayoutManager(getActivity());
+        navController = Navigation.findNavController(view);
+        layoutManager = new LinearLayoutManager(getActivity());
         binding.postRV.setLayoutManager(layoutManager);
         binding.postRV.setHasFixedSize(true);
-        postViewModel=new ViewModelProvider(requireActivity()).get(PostViewModel.class);
+        postViewModel = new ViewModelProvider(requireActivity()).get(PostViewModel.class);
+        postViewModel.loadPosts();
         postViewModel.getPostsLiveData().observe(getViewLifecycleOwner(), new Observer<List<Post>>() {
             @Override
             public void onChanged(List<Post> posts) {
+                isDataLoaded = true;
                 binding.postlistPB.setVisibility(View.GONE);
-                    adapter=new PostAdapter(posts);
-                    binding.postRV.setAdapter(adapter);
+                adapter = new PostAdapter(posts);
+                binding.postRV.setAdapter(adapter);
 
             }
         });
 
+    }
+
+    @Override
+    public void onResume() {
+        //if it doesn't get the internet connection for the first time when the on create method is called
+        //then it will try to load the data again when on resume is called
+        if (!isDataLoaded) {
+            postViewModel.loadPosts();
+        }
+
+        super.onResume();
     }
 }

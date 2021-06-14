@@ -22,13 +22,13 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
     @NonNull
     @Override
     public PostViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        SinglePostBinding binding=SinglePostBinding.inflate(LayoutInflater.from(parent.getContext()),parent,false);
+        SinglePostBinding binding = SinglePostBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false);
         return new PostViewHolder(binding);
     }
 
     @Override
     public void onBindViewHolder(@NonNull PostViewHolder holder, int position) {
-        Post post=postList.get(position);
+        Post post = postList.get(position);
         holder.postBinding.setPost(post);
 
     }
@@ -38,12 +38,12 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
         return postList.size();
     }
 
-    public class PostViewHolder extends RecyclerView.ViewHolder{
+    public class PostViewHolder extends RecyclerView.ViewHolder {
         SinglePostBinding postBinding;
 
         public PostViewHolder(@NonNull SinglePostBinding binding) {
             super(binding.getRoot());
-            postBinding=binding;
+            postBinding = binding;
         }
     }
 }

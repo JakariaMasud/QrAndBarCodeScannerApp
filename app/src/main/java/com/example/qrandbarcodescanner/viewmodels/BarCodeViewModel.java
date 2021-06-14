@@ -12,19 +12,21 @@ public class BarCodeViewModel extends ViewModel {
     BarCodeRepository repository;
 
     public BarCodeViewModel() {
-        repository=new BarCodeRepository();
+        repository = new BarCodeRepository();
     }
 
 
-    public void insertBarCodeData(BarCodeDataModel model){
+    public void insertBarCodeData(BarCodeDataModel model) {
         repository.insertBarCodeData(model);
 
     }
-    public  LiveData<List<BarCodeDataModel>> getBarCodeListLiveData(){
-        return  repository.getBarCodeListLiveData();
+
+    public LiveData<List<BarCodeDataModel>> getBarCodeListLiveData() {
+        return repository.getBarCodeListLiveData();
     }
-    public LiveData<Boolean>getInsertProcessLiveData(){
-        return  repository.getInsertProcessLiveData();
+
+    public LiveData<Boolean> getInsertProcessLiveData() {
+        return repository.getInsertProcessLiveData();
     }
 
 }

@@ -32,27 +32,26 @@ public class BarCodeListFragment extends Fragment {
     RecyclerView.LayoutManager layoutManager;
 
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        binding=FragmentBarCodeListBinding.inflate(inflater,container,false);
+        binding = FragmentBarCodeListBinding.inflate(inflater, container, false);
         return binding.getRoot();
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        barCodeViewModel=new ViewModelProvider(requireActivity()).get(BarCodeViewModel.class);
+        barCodeViewModel = new ViewModelProvider(requireActivity()).get(BarCodeViewModel.class);
         layoutManager = new LinearLayoutManager(getActivity());
         binding.barcodeRV.setLayoutManager(layoutManager);
         binding.barcodeRV.setHasFixedSize(true);
         barCodeViewModel.getBarCodeListLiveData().observe(getViewLifecycleOwner(), new Observer<List<BarCodeDataModel>>() {
             @Override
             public void onChanged(List<BarCodeDataModel> barCodeList) {
-                    binding.noItemTV.setVisibility(View.GONE);
-                    adapter=new BarCodeAdapter(barCodeList);
-                    binding.barcodeRV.setAdapter(adapter);
+                binding.noItemTV.setVisibility(View.GONE);
+                adapter = new BarCodeAdapter(barCodeList);
+                binding.barcodeRV.setAdapter(adapter);
 
 
             }

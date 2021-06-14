@@ -23,8 +23,8 @@ import java.util.List;
 
 public class BarCodeRepository {
     DatabaseReference database = FirebaseDatabase.getInstance().getReference();
-    private  MutableLiveData<List<BarCodeDataModel>> barCodeListLiveData=new MutableLiveData<>();
-    private  SingleLiveEvent<Boolean>insertProcessLiveData=new SingleLiveEvent<Boolean>();
+    private MutableLiveData<List<BarCodeDataModel>> barCodeListLiveData = new MutableLiveData<>();
+    private SingleLiveEvent<Boolean> insertProcessLiveData = new SingleLiveEvent<Boolean>();
 
     public LiveData<List<BarCodeDataModel>> getBarCodeListLiveData() {
         return barCodeListLiveData;
@@ -42,15 +42,15 @@ public class BarCodeRepository {
         FirebaseInstallations.getInstance().getId().addOnCompleteListener(new OnCompleteListener<String>() {
             @Override
             public void onComplete(@NonNull Task<String> task) {
-                if(task.isSuccessful()){
+                if (task.isSuccessful()) {
                     //got the installation ID
                     database.child("users").child(task.getResult()).child("BarcodeList").addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
-                            if(snapshot.exists()){
-                                List<BarCodeDataModel>dataList=new ArrayList<>();
-                                for(DataSnapshot barCodeSnapshot:snapshot.getChildren()){
-                                    BarCodeDataModel data=barCodeSnapshot.getValue(BarCodeDataModel.class);
+                            if (snapshot.exists()) {
+                                List<BarCodeDataModel> dataList = new ArrayList<>();
+                                for (DataSnapshot barCodeSnapshot : snapshot.getChildren()) {
+                                    BarCodeDataModel data = barCodeSnapshot.getValue(BarCodeDataModel.class);
                                     dataList.add(data);
                                 }
                                 barCodeListLiveData.postValue(dataList);
@@ -63,14 +63,14 @@ public class BarCodeRepository {
 
                         }
                     });
-                }else{
+                } else {
                     //failed to retrieve installationId
                 }
             }
         });
     }
 
-    public  void insertBarCodeData(BarCodeDataModel barCodeData){
+    public void insertBarCodeData(BarCodeDataModel barCodeData) {
         FirebaseInstallations.getInstance().getId()
                 .addOnCompleteListener(new OnCompleteListener<String>() {
                     @Override
@@ -80,10 +80,10 @@ public class BarCodeRepository {
                             database.child("users").child(task.getResult()).child("BarcodeList").push().setValue(barCodeData).addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
-                                    if(task.isSuccessful()){
+                                    if (task.isSuccessful()) {
                                         insertProcessLiveData.postValue(true);
 
-                                    }else {
+                                    } else {
                                         insertProcessLiveData.postValue(false);
                                     }
                                 }

@@ -21,10 +21,6 @@ public class PostViewModel extends ViewModel {
         return postsLiveData;
     }
 
-    public PostViewModel() {
-        loadPosts();
-    }
-
     public   void loadPosts(){
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(Api.BASE_URL)

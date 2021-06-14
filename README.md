@@ -17,7 +17,7 @@ An android application which allows user to scan qr or barcode and saved it into
 
 #### Screenshot of App Screen: 
 
-<img src="images/1.jpg" height="550">
-<img src="images/2.jpg" height="550">
+<img src="images/1.jpg" height="550"> <img src="images/2.jpg" height="550">
+
 <img src="images/3.jpg" height="550">
 

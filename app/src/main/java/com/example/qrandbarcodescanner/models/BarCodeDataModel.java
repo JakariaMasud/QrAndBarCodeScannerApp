@@ -1,7 +1,7 @@
 package com.example.qrandbarcodescanner.models;
 
 public class BarCodeDataModel {
-    private  String barCodeData,timeOfScan;
+    private String barCodeData, timeOfScan;
 
     public BarCodeDataModel(String barCodeData, String timeOfScan) {
         this.barCodeData = barCodeData;

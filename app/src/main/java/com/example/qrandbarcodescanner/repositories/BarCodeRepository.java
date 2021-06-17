@@ -24,7 +24,7 @@ import java.util.List;
 public class BarCodeRepository {
     DatabaseReference database = FirebaseDatabase.getInstance().getReference();
     private MutableLiveData<List<BarCodeDataModel>> barCodeListLiveData = new MutableLiveData<>();
-    private SingleLiveEvent<Boolean> insertProcessLiveData = new SingleLiveEvent<Boolean>();
+    final private SingleLiveEvent<Boolean> insertProcessLiveData = new SingleLiveEvent<Boolean>();
 
     public LiveData<List<BarCodeDataModel>> getBarCodeListLiveData() {
         return barCodeListLiveData;

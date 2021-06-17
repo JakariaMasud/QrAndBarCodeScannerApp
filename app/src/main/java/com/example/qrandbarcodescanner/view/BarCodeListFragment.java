@@ -1,6 +1,5 @@
 package com.example.qrandbarcodescanner.view;
 
-import android.app.FragmentBreadCrumbs;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -10,13 +9,9 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
-import com.example.qrandbarcodescanner.R;
 import com.example.qrandbarcodescanner.adapters.BarCodeAdapter;
 import com.example.qrandbarcodescanner.databinding.FragmentBarCodeListBinding;
 import com.example.qrandbarcodescanner.models.BarCodeDataModel;
